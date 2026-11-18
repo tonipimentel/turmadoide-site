@@ -1,0 +1,249 @@
+<!doctype html>
+<!--
+  Página de divulgação da Turma do Ide (turmadoide.com.br), como na prancha "Landing" da reformulação.
+  O estilo é o estilo.css, com a mesma identidade do app (web/src/styles/tokens.css).
+
+  O que conferir antes de publicar:
+  - O endereço do app: os botões "Começar grátis" e "Entrar" apontam para https://app.turmadoide.com.br
+    (o "?criar" abre a página já em "Criar conta"). Se o app for para outro endereço, troque aqui e em
+    historias.html.
+  - Os planos e os preços: os do /admin. Ao abrir, o planos.js busca os planos à mostra e o preço do avulso
+    no app (data-vitrine da lista, GET /api/vitrine) e refaz os cartões; os escritos aqui são o que aparece
+    se o app não responder, então vale mantê-los perto dos do /admin. O botão de cada plano abre o /planos do
+    app com ?plano=<chave do plano> (ou ?plano=avulso), que destaca o plano escolhido; quem ainda não tem
+    conta cria antes e volta para lá.
+  - O episódio de exemplo: o atributo data-episodio do <body>. Vazio, o botão de tocar e o "Ver um
+    episódio" não aparecem. Com o endereço de um .mp4 (por exemplo, "video/davi-e-golias.mp4", numa pasta
+    video/ ao lado desta página), o vídeo toca aqui mesmo; com outro endereço (o link para os pais de um
+    episódio pronto, https://app.turmadoide.com.br/assistir/...), o botão abre esse endereço.
+  - As histórias: o cartão com data-episodio toca o episódio pronto dela (um .mp4 toca aqui, numa janela;
+    o link para os pais abre a página dele). Sem episódio, o cartão leva ao Criar do app com a história
+    escolhida (/novo?historia=<id de web/src/lib/stories.ts>). Vale o mesmo em historias.html.
+  - Termos e privacidade: os textos estão em termos.html e privacidade.html. O comentário do alto de cada
+    página diz o que conferir ao mudar o texto ou um fornecedor.
+  As artes (img/) são cópias de web/public/turma e web/public/cenarios; as da turma pulando (img/*-pulando.webp,
+  que aparecem ao passar o mouse) saem de src/criador/episodio/dados/poses/<bicho>/pulando.png, na escala
+  da pose acenando.
+-->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Turma do Ide · Histórias bíblicas animadas para as crianças</title>
+<meta name="description" content="Escolha a história ou conte o que a turma está vivendo: o Ide e os amigos contam, você revisa, e a aula sai com vídeo, versículo e perguntas para conversar. Para igrejas e ministério infantil.">
+<meta name="theme-color" content="#e6f4fd">
+<meta property="og:title" content="Turma do Ide · Histórias bíblicas animadas para as crianças">
+<meta property="og:description" content="O Ide e os amigos contam a história da Bíblia que a sua turma precisa ouvir. Você revisa, e a aula sai com vídeo, versículo e perguntas.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<link rel="preload" href="fontes/baloo-2-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="estilo.css">
+<script src="animacao.js" defer></script>
+<script src="planos.js" defer></script>
+</head>
+<body data-episodio="https://app.turmadoide.com.br/assistir/eBApBJtYTP_mAeZbmMtyAA" data-episodio-titulo="Davi e o gigante">
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="./"><img src="img/ide.webp" alt="" width="293" height="320"><b>Turma do <span>Ide</span></b></a>
+    <nav aria-label="Principal">
+      <a class="anchor" href="#turma">A turma</a>
+      <a class="anchor" href="#historias">Histórias</a>
+      <a class="anchor" href="#planos">Planos</a>
+      <a class="enter" href="https://app.turmadoide.com.br/">Entrar</a>
+      <a class="button button-primary" href="https://app.turmadoide.com.br/?criar">Começar grátis</a>
+    </nav>
+  </header>
+</div>
+
+<main>
+  <div class="wrap hero">
+    <div class="hero-text">
+      <h1>Histórias bíblicas animadas para as crianças da sua igreja</h1>
+      <p class="muted">Escolha a história ou conte o que a turma está vivendo. O Ide e os amigos contam, você revisa, e a aula sai com vídeo, versículo e perguntas para conversar.</p>
+      <div class="actions">
+        <a class="button button-primary button-lg" href="https://app.turmadoide.com.br/?criar">Começar grátis</a>
+        <a class="button button-lg" href="#episodio" data-ver-episodio hidden>
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Ver um episódio</a>
+        <a class="button button-lg" href="#historias" data-sem-episodio>Ver as histórias</a>
+      </div>
+      <p class="note muted">3 episódios grátis nos 30 primeiros dias. Sem cartão.</p>
+    </div>
+    <div class="hero-art" id="episodio">
+      <div class="hero-frame">
+        <img src="img/cenario-vale.webp" alt="Cena de um episódio: o vale de Davi e Golias, em desenho" width="640" height="360">
+        <button class="hero-play" type="button" data-tocar hidden>
+          <svg aria-hidden="true" width="36" height="36" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+      </div>
+      <img class="hero-ide" src="img/ide-explicando.webp" alt="Ide, o escudo" width="309" height="320">
+      <img class="hero-eclesia" src="img/eclesia.webp" alt="Eclésia, a princesa" width="214" height="320">
+    </div>
+  </div>
+
+  <section class="band" id="turma" aria-labelledby="turma-titulo">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="turma-titulo">Conheça a turma</h2>
+        <p class="muted">Em cada episódio o Ide ensina a princesa Eclésia e chama o amigo que combina com a história. É esse amigo quem conta.</p>
+      </div>
+      <!-- Ao passar o mouse (ou tocar), o personagem troca o aceno pela pose pulando e dá pulinhos. -->
+      <ul class="grid turma">
+        <li style="background:#fff3cc"><span class="pose"><img src="img/ide.webp" alt="" width="293" height="320"><img class="pose-pulando" src="img/ide-pulando.webp" alt="" width="300" height="320" loading="lazy"></span><strong>Ide</strong><span class="papel">o escudo, ensina</span></li>
+        <li style="background:#fbdde8"><span class="pose"><img src="img/eclesia.webp" alt="" width="214" height="320"><img class="pose-pulando" src="img/eclesia-pulando.webp" alt="" width="254" height="320" loading="lazy"></span><strong>Eclésia</strong><span class="papel">a princesa, aprende</span></li>
+        <li style="background:#f9d5d1"><span class="pose"><img src="img/matthew.webp" alt="" width="253" height="320"><img class="pose-pulando" src="img/matthew-pulando.webp" alt="" width="267" height="320" loading="lazy"></span><strong>Matthew</strong><span class="papel">o leão: a realeza de Jesus</span></li>
+        <li style="background:#fbdfcb"><span class="pose"><img src="img/mark.webp" alt="" width="256" height="320"><img class="pose-pulando" src="img/mark-pulando.webp" alt="" width="244" height="322" loading="lazy"></span><strong>Mark</strong><span class="papel">o novilho: o serviço de Jesus</span></li>
+        <li style="background:#cfedef"><span class="pose"><img src="img/luke.webp" alt="" width="221" height="320"><img class="pose-pulando" src="img/luke-pulando.webp" alt="" width="266" height="320" loading="lazy"></span><strong>Luke</strong><span class="papel">o cavaleiro: a humanidade de Jesus</span></li>
+        <li style="background:#f1e3d0"><span class="pose"><img src="img/john.webp" alt="" width="305" height="320"><img class="pose-pulando" src="img/john-pulando.webp" alt="" width="327" height="320" loading="lazy"></span><strong>John</strong><span class="papel">a águia: a divindade de Jesus</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="como">
+    <div class="wrap">
+      <div class="section-head"><h2 id="como">Da história à aula, em três passos</h2></div>
+      <ol class="grid steps">
+        <li class="card"><span class="step-number" aria-hidden="true">1</span><h3>Escolha a história</h3><p class="muted">Do catálogo da Turma. Ou conte o que a turma está vivendo, como medo, briga ou ciúme, e a Turma escolhe a história da Bíblia que ajuda.</p></li>
+        <li class="card"><span class="step-number" aria-hidden="true">2</span><h3>Revise o roteiro</h3><p class="muted">Leia as falas e veja as cenas antes de gerar. Nada vira vídeo sem passar por você.</p></li>
+        <li class="card"><span class="step-number" aria-hidden="true">3</span><h3>Dê a aula</h3><p class="muted">Baixe o vídeo e imprima o kit da aula: o versículo para memorizar e as perguntas para conversar. Um link leva o episódio para os pais reverem em casa.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band-night" id="historias" aria-labelledby="historias-titulo">
+    <div class="wrap">
+      <div class="section-head section-head-row">
+        <h2 id="historias-titulo">Histórias que a Turma já conta</h2>
+        <a class="more" href="historias.html">Ver o catálogo inteiro</a>
+      </div>
+      <!-- Com data-episodio, o cartão toca o episódio pronto (o href); sem, leva ao Criar com a história escolhida. -->
+      <ul class="grid stories">
+        <li><a class="story" href="https://app.turmadoide.com.br/assistir/eBApBJtYTP_mAeZbmMtyAA" data-episodio><span class="story-art"><img src="img/cenario-vale.webp" alt="" width="640" height="360" loading="lazy"></span><span class="story-text"><strong>Davi e Golias</strong><span>1 Samuel 17</span></span><span class="story-acao"><span class="story-botao"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><span class="rotulo">Assistir</span></span></span></a></li>
+        <li><a class="story" href="https://app.turmadoide.com.br/novo?historia=nascimento-de-jesus&amp;criar"><span class="story-art"><img src="img/cenario-estabulo.webp" alt="" width="640" height="360" loading="lazy"></span><span class="story-text"><strong>O nascimento de Jesus</strong><span>Lucas 2.1-20</span></span><span class="story-acao"><span class="story-botao"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.3 6.2 6.2 2.3-6.2 2.3-2.3 6.2-2.3-6.2L3.5 11l6.2-2.3z"/></svg><span class="rotulo">Criar este episódio</span></span></span></a></li>
+        <li><a class="story" href="https://app.turmadoide.com.br/novo?historia=arca-de-noe&amp;criar"><span class="story-art"><img src="img/cenario-arca.webp" alt="" width="640" height="360" loading="lazy"></span><span class="story-text"><strong>A arca de Noé</strong><span>Gênesis 6.9–9.17</span></span><span class="story-acao"><span class="story-botao"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.3 6.2 6.2 2.3-6.2 2.3-2.3 6.2-2.3-6.2L3.5 11l6.2-2.3z"/></svg><span class="rotulo">Criar este episódio</span></span></span></a></li>
+        <li><a class="story" href="https://app.turmadoide.com.br/novo?historia=ressurreicao&amp;criar"><span class="story-art"><img src="img/cenario-tumulo.webp" alt="" width="640" height="360" loading="lazy"></span><span class="story-text"><strong>A ressurreição de Jesus</strong><span>João 20.1-18</span></span><span class="story-acao"><span class="story-botao"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.3 6.2 6.2 2.3-6.2 2.3-2.3 6.2-2.3-6.2L3.5 11l6.2-2.3z"/></svg><span class="rotulo">Criar este episódio</span></span></span></a></li>
+      </ul>
+      <p class="note">São 30 histórias, do Antigo Testamento à primeira igreja, e você também pode pedir uma passagem.</p>
+    </div>
+  </section>
+
+  <section id="planos" aria-labelledby="planos-titulo">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="planos-titulo">Planos</h2>
+        <p class="muted">Comece de graça, sem cartão. Assine quando a turma pedir mais episódios.</p>
+      </div>
+      <!-- O cartão inteiro é clicável: o link do botão se estende sobre ele (.plan-cta::after). -->
+      <ul class="grid plans" data-vitrine="https://app.turmadoide.com.br/api/vitrine">
+        <li class="card plan" data-plano="gratis">
+          <h3>Grátis</h3>
+          <div class="price">R$ 0</div>
+          <p>3 episódios nos 30 primeiros dias, depois 1 por mês</p>
+          <p class="plan-baixar">Assista no app; baixe só os episódios prontos</p>
+          <p class="plan-marca">Com a marca d'água turmadoide.com.br</p>
+          <a class="button plan-cta" href="https://app.turmadoide.com.br/?criar">Começar grátis</a>
+        </li>
+        <li class="card plan" data-plano="entrada">
+          <h3>Entrada</h3>
+          <div class="price">R$ 39,90 <small>por mês</small></div>
+          <p>5 episódios por mês</p>
+          <p class="plan-baixar" data-baixa><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Baixe os vídeos</p>
+          <p class="plan-marca">Com a marca d'água turmadoide.com.br</p>
+          <a class="button plan-cta" href="https://app.turmadoide.com.br/planos?plano=entrada&amp;criar">Assinar o Entrada</a>
+        </li>
+        <li class="card plan featured" data-plano="professor">
+          <h3>Professor</h3>
+          <div class="price">R$ 49,90 <small>por mês</small></div>
+          <p>8 episódios por mês, dois por domingo</p>
+          <p class="plan-baixar" data-baixa><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Baixe os vídeos</p>
+          <p class="plan-marca" data-sem-marca><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Sem marca d'água</p>
+          <a class="button button-primary plan-cta" href="https://app.turmadoide.com.br/planos?plano=professor&amp;criar">Assinar o Professor</a>
+        </li>
+        <li class="card plan" data-plano="avulso">
+          <h3>Avulso</h3>
+          <div class="price">R$ 9,90 <small>por episódio</small></div>
+          <p>Sem assinatura, ou para ir além da cota do mês</p>
+          <p class="plan-baixar" data-baixa><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Baixe os vídeos</p>
+          <p class="plan-marca" data-sem-marca><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Sem marca d'água</p>
+          <a class="button plan-cta" href="https://app.turmadoide.com.br/planos?plano=avulso&amp;criar">Comprar avulso</a>
+        </li>
+      </ul>
+      <p class="note muted" style="margin-top:20px">Falha nossa não conta na cota. Cancele quando quiser: o plano vale até o fim do mês pago. A assinatura é no cartão de crédito; o avulso, no Pix, no boleto ou no cartão. As regras de cancelamento e reembolso estão nos <a href="termos.html#cancelamento">termos de uso</a>.</p>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="cuidados">
+    <div class="wrap">
+      <div class="section-head"><h2 id="cuidados">Feito para o ministério infantil</h2></div>
+      <div class="grid cares">
+        <div class="card"><h3>Só histórias da Bíblia</h3><p class="muted">A Turma conta o que está no texto bíblico. Não há tema livre nem opinião na boca dos personagens.</p></div>
+        <div class="card"><h3>Sem dados das crianças</h3><p class="muted">Quem usa é quem ensina: professores, líderes, pastores e pais. As crianças só assistem: não há conta nem tela para elas.</p></div>
+        <div class="card"><h3>Você revisa tudo</h3><p class="muted">O roteiro é escrito por Turma do Ide, e só vira vídeo depois da sua revisão.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="fecho">
+    <div class="wrap closing">
+      <img src="img/ide-pulando.webp" alt="" width="300" height="320" loading="lazy">
+      <div>
+        <h2 id="fecho">Qual história a sua turma vai ouvir no domingo?</h2>
+        <a class="button button-primary button-lg" href="https://app.turmadoide.com.br/?criar">Começar grátis</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Turma do Ide · turmadoide.com.br</p>
+    <nav aria-label="Rodapé">
+      <a href="historias.html">Histórias</a>
+      <a href="termos.html">Termos de uso</a>
+      <a href="privacidade.html">Privacidade</a>
+      <a href="mailto:suporte@turmadoide.com.br">Contato</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  // O episódio de exemplo (o data-episodio do <body>): sem ele, a página fica sem o botão de tocar.
+  (function () {
+    var endereco = (document.body.dataset.episodio || "").trim();
+    if (!endereco) return;
+    var titulo = document.body.dataset.episodioTitulo || "um episódio";
+    var arte = document.getElementById("episodio");
+    var quadro = arte.querySelector(".hero-frame");
+    var tocar = arte.querySelector("[data-tocar]");
+    var ver = document.querySelector("[data-ver-episodio]");
+    document.querySelector("[data-sem-episodio]").hidden = true;
+    ver.hidden = false;
+    tocar.hidden = false;
+    tocar.setAttribute("aria-label", "Assistir a " + titulo);
+
+    var arquivo = /\.(mp4|webm)(\?.*)?$/i.test(endereco);
+    function assistir(evento) {
+      if (!arquivo) return; // um endereço de página: o link abre sozinho
+      evento.preventDefault();
+      var video = document.createElement("video");
+      video.src = endereco;
+      video.poster = quadro.querySelector("img").src;
+      video.controls = true;
+      video.playsInline = true;
+      video.autoplay = true;
+      video.setAttribute("aria-label", "Episódio: " + titulo);
+      quadro.replaceChildren(video);
+      arte.classList.add("playing");
+      arte.scrollIntoView({ block: "center" });
+      video.focus();
+    }
+    if (arquivo) {
+      tocar.addEventListener("click", assistir);
+      ver.addEventListener("click", assistir);
+    } else {
+      ver.href = endereco;
+      tocar.addEventListener("click", function () { window.location.href = endereco; });
+    }
+  })();
+</script>
+</body>
+</html>

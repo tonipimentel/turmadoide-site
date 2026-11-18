@@ -1,0 +1,275 @@
+<!doctype html>
+<!--
+  Os termos de uso da Turma do Ide, que o cadastro do app pede para aceitar (TERMOS_URL). O estilo é o
+  estilo.css, o mesmo da página inicial (o bloco "As páginas de texto").
+
+  O que conferir antes de publicar:
+  - Quem responde pelo serviço: a cláusula 1.2 traz o nome fantasia e o CNPJ. O dono escolheu o nome
+    fantasia, e não a razão social, e publicar sem o endereço (17/11/2026), sabendo que o Decreto
+    7.962/2013 pede o nome empresarial, o CNPJ e o endereço à vista.
+  - A versão: ao mudar o texto, troque a data do alto da página (data-versao e o texto) e a TERMOS_VERSAO
+    (o padrão em src/criador/config.py e a variável no servidor). O app pede um aceite novo a cada cliente.
+  - As regras daqui repetem as do app: a cota (src/criador/cota.py e a Ajuda), a assinatura, a desistência e
+    os avulsos (src/criador/assinaturas.py), o prazo de guarda (RETENCAO_DIAS) e o link para os pais. Se uma
+    delas mudar no código, mude aqui também. Os preços e os números de cada plano ficam de fora de propósito:
+    vêm do /admin e aparecem na página Planos.
+  - A seção 6.3 aponta para as políticas de uso da Anthropic e da ElevenLabs (conferidas em 17/11/2026).
+-->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Termos de uso · Turma do Ide</title>
+<meta name="description" content="Os termos de uso da Turma do Ide: quem pode usar, como os episódios são feitos com inteligência artificial, a cota, os pagamentos, o cancelamento e o reembolso.">
+<meta name="theme-color" content="#e6f4fd">
+<link rel="preload" href="fontes/baloo-2-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="./"><img src="img/ide.webp" alt="" width="293" height="320"><b>Turma do <span>Ide</span></b></a>
+    <nav aria-label="Principal">
+      <a class="anchor" href="./#turma">A turma</a>
+      <a class="anchor" href="./#planos">Planos</a>
+      <a class="enter" href="https://app.turmadoide.com.br/">Entrar</a>
+      <a class="button button-primary" href="https://app.turmadoide.com.br/?criar">Começar grátis</a>
+    </nav>
+  </header>
+</div>
+
+<main>
+  <div class="wrap">
+    <div class="page-head">
+      <h1>Termos de uso</h1>
+      <p class="muted" data-versao="2026-11-17">Versão de 17 de novembro de 2026.</p>
+    </div>
+
+    <article class="doc">
+      <div class="doc-box doc-summary">
+        <h2>Em poucas palavras</h2>
+        <ul>
+          <li>A conta é de adultos que ensinam crianças: professores, líderes, pastores e pais. As crianças só assistem.</li>
+          <li>Os episódios são feitos com inteligência artificial: o roteiro é escrito pelo Claude, da Anthropic, e as vozes são sintéticas, da ElevenLabs.</li>
+          <li>Você revisa tudo antes de gerar o vídeo e antes de mostrar. A fidelidade à passagem e à lição é sua.</li>
+          <li>Não escreva dados de crianças. Se quiser que um personagem cite alguém da turma, só o primeiro nome, com a autorização dos pais.</li>
+          <li>Os vídeos são para o ensino na sua igreja, no seu ministério ou na sua família. Não dá para revender o serviço nem tirar a marca d'água.</li>
+          <li>Cada episódio feito conta 1 na cota do mês. Falha nossa não conta.</li>
+          <li>A assinatura é mensal, no cartão de crédito. Os avulsos se pagam por Pix, boleto ou cartão.</li>
+          <li>Cancele quando quiser: o plano vale até o fim do mês pago. Nos 7 primeiros dias, dá para desistir e receber o valor dos episódios que não usou.</li>
+          <li>Os episódios ficam guardados por 30 dias. Baixe os seus vídeos.</li>
+        </ul>
+        <p>Este resumo ajuda a ler. O que vale é o texto completo, abaixo.</p>
+      </div>
+
+      <nav class="doc-box doc-index" aria-labelledby="indice">
+        <h2 id="indice">Nesta página</h2>
+        <ol>
+          <li><a href="#quem-somos">Quem somos e o que são estes termos</a></li>
+          <li><a href="#quem-pode-usar">Quem pode usar</a></li>
+          <li><a href="#como-sao-feitos">Como os episódios são feitos</a></li>
+          <li><a href="#revisao">A revisão é sua</a></li>
+          <li><a href="#seu-conteudo">O que você escreve e envia</a></li>
+          <li><a href="#uso">O que pode e o que não pode</a></li>
+          <li><a href="#direitos">De quem são os episódios</a></li>
+          <li><a href="#cota">Planos, cota e avulsos</a></li>
+          <li><a href="#pagamentos">Pagamentos</a></li>
+          <li><a href="#cancelamento">Cancelamento, desistência e reembolso</a></li>
+          <li><a href="#guarda">Guarda dos episódios e funcionamento</a></li>
+          <li><a href="#fim-da-conta">Suspensão e fim da conta</a></li>
+          <li><a href="#responsabilidades">Responsabilidades</a></li>
+          <li><a href="#privacidade">Privacidade</a></li>
+          <li><a href="#mudancas">Mudanças nestes termos</a></li>
+          <li><a href="#lei-e-contato">Lei, foro e contato</a></li>
+        </ol>
+      </nav>
+
+      <section id="quem-somos">
+        <h2>1. Quem somos e o que são estes termos</h2>
+        <p><b>1.1.</b> A Turma do Ide é um serviço pela internet, em turmadoide.com.br e app.turmadoide.com.br, que cria episódios animados de histórias da Bíblia para quem ensina crianças.</p>
+        <p><b>1.2.</b> O serviço é prestado pela Wikode Software, inscrita no CNPJ sob o nº 47.963.421/0001-81. Nestes termos, “Turma do Ide” e “nós” querem dizer a Wikode Software. O contato é <a href="mailto:suporte@turmadoide.com.br">suporte@turmadoide.com.br</a>.</p>
+        <p><b>1.3.</b> Estes termos são o contrato entre você e a Turma do Ide. Você os aceita ao marcar “Li e aceito os termos de uso e a política de privacidade” na criação da conta, e de novo quando publicarmos uma versão nova. Guardamos a versão aceita, a data, a hora e o endereço IP do aceite.</p>
+        <p><b>1.4.</b> A <a href="privacidade.html">Política de Privacidade</a> faz parte destes termos. Se você não concordar com algum ponto, não crie a conta nem use o serviço.</p>
+      </section>
+
+      <section id="quem-pode-usar">
+        <h2>2. Quem pode usar</h2>
+        <p><b>2.1.</b> A conta é para quem tem 18 anos ou mais e ensina crianças: professores de escola bíblica, líderes do culto infantil, pastores, pais e responsáveis. Ao criar a conta, você declara ter 18 anos ou mais.</p>
+        <p><b>2.2.</b> Crianças e adolescentes não têm conta, não usam o app e não devem receber a sua senha. Eles só assistem aos vídeos, e quem mostra é sempre um adulto.</p>
+        <p><b>2.3.</b> Se você usa a Turma do Ide em nome de uma igreja, de um ministério ou de outra organização, declara que pode aceitar estes termos por ela. Nesse caso, “você” quer dizer você e a organização.</p>
+        <p><b>2.4.</b> Você declara que não é órgão nem entidade pública e que não contrata em nome de um (por exemplo, escola pública, prefeitura, secretaria ou autarquia). Para esses casos é preciso um acordo por escrito antes do uso: escreva para o suporte.</p>
+        <p><b>2.5.</b> Os dados do cadastro precisam ser verdadeiros e ficar em dia. Uma conta nova pode esperar a nossa aprovação, e podemos não aprovar um cadastro com dados incompletos ou falsos, ou de quem não é o público do serviço.</p>
+        <p><b>2.6.</b> O acesso é pessoal. Cuide da senha, não a empreste e avise o suporte se desconfiar que outra pessoa entrou na conta. O que for feito com o seu acesso é responsabilidade sua. Não crie mais de uma conta para repetir o plano Grátis.</p>
+      </section>
+
+      <section id="como-sao-feitos">
+        <h2>3. Como os episódios são feitos</h2>
+        <p><b>3.1.</b> Você escolhe uma história do catálogo, pede uma passagem ou conta o que a turma está vivendo, e diz a lição e a idade das crianças. A Turma do Ide escreve o roteiro com o Ide, a Eclésia e um dos amigos. Você lê, muda as falas e as cenas e, quando estiver bom, pede o vídeo. Junto vem o kit da aula, com um versículo para memorizar e perguntas para conversar.</p>
+        <p><b>3.2.</b> <strong>Os episódios são feitos com inteligência artificial.</strong> O roteiro, o kit da aula e as traduções são escritos por um modelo de IA, o Claude, da Anthropic. As vozes dos personagens são sintéticas, geradas pela ElevenLabs: ninguém grava as falas do seu episódio. O desenho é montado pela plataforma, com os personagens e os cenários da Turma do Ide.</p>
+        <p><b>3.3.</b> Para isso, o que você escreve é enviado a esses fornecedores, que ficam fora do Brasil. A lista dos fornecedores e o que cada um recebe estão na <a href="privacidade.html">Política de Privacidade</a>. Podemos trocar de fornecedor ou de modelo; quando a troca mudar o caminho dos seus dados, a Política de Privacidade é atualizada.</p>
+        <p><b>3.4.</b> A Turma do Ide só conta histórias da Bíblia. Um pedido fora disso, ou que contrarie a seção 6, pode ser recusado.</p>
+      </section>
+
+      <section id="revisao">
+        <h2>4. A revisão é sua</h2>
+        <p><b>4.1.</b> A inteligência artificial erra. Um roteiro pode trazer um fato que não está na passagem, uma referência ou um versículo citado errado, um nome trocado, uma explicação que a sua igreja não ensina ou uma fala fora do tom para a idade da turma. Por isso nenhum roteiro vira vídeo sem passar por você.</p>
+        <p><b>4.2.</b> Antes de gerar o vídeo, e de novo antes de mostrar ou publicar, confira com a Bíblia e com o ensino da sua igreja o roteiro, o versículo, as perguntas do kit e as traduções. Não confie em nenhuma afirmação do roteiro sem conferir.</p>
+        <p><b>4.3.</b> A fidelidade do episódio à passagem e à lição e a decisão de mostrá-lo a uma turma são suas. A Turma do Ide é uma ferramenta de apoio: não é ligada a nenhuma denominação, não substitui o professor, o pastor nem o estudo da Bíblia, e não dá aconselhamento pastoral, psicológico, médico ou jurídico.</p>
+        <p><b>4.4.</b> As vozes também erram, na pronúncia de um nome bíblico ou na entonação de uma frase. Assista ao vídeo inteiro antes de mostrar.</p>
+        <p><b>4.5.</b> Não apresente os episódios como narrados por pessoas nem como feitos sem inteligência artificial. Nas redes que pedem aviso de conteúdo feito com IA, o aviso é com você.</p>
+      </section>
+
+      <section id="seu-conteudo">
+        <h2>5. O que você escreve e envia</h2>
+        <p><b>5.1.</b> O seu conteúdo é o que você escreve ou envia: a passagem pedida, a lição, a situação da turma, as orientações, as mudanças no roteiro e no kit, os nomes que pede para os personagens citarem, o nome e o logo da igreja e os vídeos de abertura e de encerramento.</p>
+        <p><b>5.2.</b> O seu conteúdo continua sendo seu. Você nos autoriza a usá-lo só para prestar o serviço a você: escrever o roteiro, gravar as vozes, produzir, guardar e mostrar os vídeos, inclusive enviando-o aos fornecedores da seção 3. A autorização é gratuita, não é exclusiva e dura enquanto o conteúdo estiver guardado na plataforma.</p>
+        <p><b>5.3.</b> Não usamos o seu conteúdo nem os episódios da sua conta para divulgar a Turma do Ide sem a sua autorização por escrito.</p>
+        <p><b>5.4.</b> Você garante que tem o direito de usar o que envia (por exemplo, o logo e as imagens e a música dos vídeos de abertura e de encerramento) e que o seu conteúdo não fere direitos de outras pessoas nem estes termos.</p>
+        <p><b>5.5.</b> <strong>Não escreva dados pessoais de crianças.</strong> Ao contar a situação da turma, descreva o assunto (medo, briga, ciúme), sem dizer de quem se trata. A única exceção é o primeiro nome, quando você pede que o Ide ou a Eclésia cite alguém da turma ou da igreja: só o primeiro nome, sempre em algo bom, sem sobrenome, idade, endereço, questão de saúde, de família ou de comportamento, nem outro dado que identifique a criança.</p>
+        <p><b>5.6.</b> A autorização dos pais ou responsáveis para citar uma criança é sua, e você a obtém antes de escrever o nome. O nome citado é ouvido por quem assistir ao vídeo, inclusive pelo link para os pais e pelo arquivo baixado.</p>
+        <p><b>5.7.</b> Textos com CPF ou com listas de e-mails são recusados.</p>
+        <p><b>5.8.</b> As sugestões que você nos manda podem ser usadas para melhorar o serviço, sem pagamento por isso.</p>
+      </section>
+
+      <section id="uso">
+        <h2>6. O que pode e o que não pode</h2>
+        <p><b>6.1.</b> A Turma do Ide serve para ensinar a Bíblia a crianças: na escola bíblica, no culto infantil, nos pequenos grupos, nos acampamentos e em família. Você pode mostrar os episódios, mandá-los aos pais, imprimir o kit da aula para a turma e publicar os vídeos nos canais da sua igreja ou do seu ministério (o site, as redes sociais, o YouTube). As regras de cada rede, inclusive sobre conteúdo para crianças, aviso de IA e monetização, são com você.</p>
+        <p><b>6.2.</b> Não é permitido:</p>
+        <ol type="a">
+          <li>revender, alugar ou sublicenciar o serviço, oferecê-lo a outras pessoas com a nossa marca ou com outra (<i lang="en">white-label</i>), ou usar a conta para fazer vídeos por encomenda para quem não é da sua igreja, do seu ministério ou da sua família;</li>
+          <li>vender os episódios ou cobrar pelo acesso a eles como produto (por exemplo, em cursos, coleções ou plataformas pagas);</li>
+          <li>tirar, cobrir ou cortar a marca d'água dos vídeos que saem com ela, ou a abertura e os créditos da Turma do Ide;</li>
+          <li>usar os personagens, os cenários, as músicas ou a marca fora dos episódios e do kit da aula: em produtos, em outras obras, em marcas ou em endereços de internet;</li>
+          <li>pedir ou produzir conteúdo ilegal; sexual, de violência gratuita ou impróprio para crianças; que promova ódio, discriminação, assédio ou humilhação de pessoas ou de grupos; que engane quem assiste, como golpes e pedidos de dinheiro enganosos; de propaganda eleitoral ou partidária; que exponha, constranja ou identifique uma criança; ou que ponha na boca dos personagens falas que não têm a ver com a história bíblica;</li>
+          <li>usar as vozes para se passar por uma pessoa real, para enganar alguém sobre quem está falando ou para fraude; separar o áudio das vozes para usar fora do episódio; ou usar as vozes, os roteiros ou os vídeos para treinar ou testar modelos de inteligência artificial ou para clonar vozes;</li>
+          <li>burlar a cota, os limites de uso, o bloqueio do download ou a aprovação do cadastro; acessar o serviço com robôs ou coletar dados em massa; copiar ou descompilar a plataforma, ou testar a segurança dela sem a nossa autorização por escrito; tentar usar o serviço como acesso direto aos modelos de IA; ou atrapalhar o funcionamento do serviço;</li>
+          <li>usar o serviço para descumprir a lei ou ferir direitos de outras pessoas.</li>
+        </ol>
+        <p><b>6.3.</b> O roteiro e as vozes vêm de fornecedores, e as regras de uso deles também valem para você: a <a href="https://www.anthropic.com/legal/aup" rel="noopener">Política de Uso da Anthropic</a> e os <a href="https://elevenlabs.io/terms-of-use" rel="noopener">Termos de Serviço</a> e a <a href="https://elevenlabs.io/use-policy" rel="noopener">Política de Uso Proibido da ElevenLabs</a>, todas em inglês. No uso das vozes, você fica obrigado, no mínimo, às mesmas restrições desses documentos da ElevenLabs; se houver diferença entre eles e estes termos, vale a regra mais rígida. A ElevenLabs é terceira beneficiária desta cláusula e pode exigir de você, diretamente, o cumprimento dessas restrições.</p>
+        <p><b>6.4.</b> Quando houver sinal de descumprimento desta seção, podemos recusar um pedido, pedir que um texto seja mudado, desligar um link, apagar um conteúdo ou suspender a conta (seção 12). Sempre que der, avisamos antes e explicamos o motivo.</p>
+        <p><b>6.5.</b> Quem encontrar um vídeo feito na Turma do Ide que descumpra estes termos (por exemplo, que cite uma criança sem autorização) pode escrever para <a href="mailto:suporte@turmadoide.com.br">suporte@turmadoide.com.br</a>. Analisamos o caso e, se for preciso, tiramos o vídeo do ar.</p>
+      </section>
+
+      <section id="direitos">
+        <h2>7. De quem são os episódios</h2>
+        <p><b>7.1.</b> São nossos, ou estão licenciados a nós: a plataforma, a marca Turma do Ide, os personagens (o Ide, a Eclésia, o Matthew, o Mark, o Luke e o John), os cenários, as artes, as músicas, as aberturas, o catálogo de histórias e os episódios prontos da Turma. Estes termos não passam nada disso a você.</p>
+        <p><b>7.2.</b> O seu conteúdo é seu (seção 5).</p>
+        <p><b>7.3.</b> Sobre o roteiro e o vídeo de cada episódio feito na sua conta, cedemos a você os direitos que nos couberem, fora o material da cláusula 7.1. O material da cláusula 7.1 que aparece no episódio fica licenciado a você, sem exclusividade e sem custo a mais, para usar o episódio como ele saiu, nos usos da seção 6.</p>
+        <p><b>7.4.</b> Essa licença não tem prazo e continua valendo depois que a assinatura ou a conta acaba, para os vídeos que você já baixou. Ela termina se você descumprir a cláusula 6.2.</p>
+        <p><b>7.5.</b> Não prometemos exclusividade. As histórias, os personagens, os cenários e as vozes são os mesmos para todos, e outra conta pode receber um roteiro ou um vídeo parecido com o seu, ou igual. Também não garantimos que o conteúdo gerado por IA seja protegido por direito autoral: a lei brasileira ainda não trata disso com clareza.</p>
+        <p><b>7.6.</b> Os episódios prontos da Turma podem ser assistidos, mostrados e baixados para os usos da seção 6, mas continuam sendo nossos: não são cedidos.</p>
+        <p><b>7.7.</b> Conforme o plano, o vídeo sai com a marca d'água turmadoide.com.br. A página Planos diz quais planos levam a marca.</p>
+      </section>
+
+      <section id="cota">
+        <h2>8. Planos, cota e avulsos</h2>
+        <p><b>8.1.</b> Os planos, os preços, os episódios de cada plano por mês, e se os vídeos do plano podem ser baixados e se levam a marca d'água, estão na <a href="./#planos">página Planos</a>. Vale o que ela mostrar no dia do seu pedido.</p>
+        <p><b>8.2.</b> O plano Grátis é para conhecer o serviço. Podemos mudar as condições dele ou deixar de oferecê-lo, avisando no app ou por e-mail.</p>
+        <p><b>8.3.</b> Cada episódio feito conta 1 na cota do plano. A cota renova no mesmo dia de cada mês: com uma assinatura, o mês conta do dia em que ela começou; sem assinatura, vale o mês do calendário. O que sobra não passa para o mês seguinte.</p>
+        <p><b>8.4.</b> Não contam na cota:</p>
+        <ul>
+          <li>o episódio cujo roteiro não saiu por erro nosso, que volta para a cota;</li>
+          <li>a produção do vídeo que falhou: o episódio continua reservado, e produzir de novo não gasta outro;</li>
+          <li>produzir de novo depois de mudar só as cenas e as poses;</li>
+          <li>o primeiro ajuste no texto das falas, que já vem com o episódio.</li>
+        </ul>
+        <p><b>8.5.</b> Contam na cota:</p>
+        <ul>
+          <li>depois do primeiro ajuste, cada produção com o texto das falas mudado, que conta 1;</li>
+          <li>o pedido recusado por descumprir estes termos e a escrita que você cancelou depois de começada: as 3 primeiras vezes do mês voltam para a cota e, depois, cada uma conta 1;</li>
+          <li>o episódio apagado sem ter sido produzido, por você ou pelo fim do prazo de guarda (cláusula 11.1), que conta 1, porque o roteiro já foi escrito.</li>
+        </ul>
+        <p><b>8.6.</b> O episódio avulso é comprado à parte, por unidade. Ele entra na cota quando o pagamento é confirmado, não vence enquanto a conta existir e é usado quando a cota do mês acaba. O episódio pago com um avulso sai sem a marca d'água e pode ser baixado em qualquer plano. Um avulso também pode ser gasto para liberar o download de um episódio já feito; gasto assim, ele não volta.</p>
+        <p><b>8.7.</b> A cota e os avulsos servem só para fazer episódios na Turma do Ide. Não são dinheiro: não podem ser sacados, vendidos nem passados a outra conta.</p>
+        <p><b>8.8.</b> Para proteger o serviço, há limites de pedidos por hora e de produções ao mesmo tempo. O app avisa quando um deles é atingido.</p>
+      </section>
+
+      <section id="pagamentos">
+        <h2>9. Pagamentos</h2>
+        <p><b>9.1.</b> Os pagamentos são processados pelo Asaas, uma instituição de pagamento. A cobrança chega no e-mail da conta, com o link do Asaas. Não recebemos nem guardamos os dados do seu cartão.</p>
+        <p><b>9.2.</b> A assinatura é mensal, só no cartão de crédito, e renova sozinha a cada mês, no mesmo dia, até ser cancelada. O plano começa quando a nossa equipe confirma o primeiro pagamento, o que não é na hora, e o mês da cota conta do dia desse pagamento.</p>
+        <p><b>9.3.</b> Os avulsos se pagam por Pix, boleto ou cartão. Enquanto a cobrança não for paga, a compra pode ser desfeita no app.</p>
+        <p><b>9.4.</b> Se o cartão for recusado na renovação, a cota do período espera o pagamento, e os avulsos continuam valendo. Sem o pagamento em 7 dias a contar do vencimento, a assinatura acaba e a conta volta para o Grátis.</p>
+        <p><b>9.5.</b> A troca de plano vale a partir do próximo vencimento, sem cobrança proporcional. Até lá continua o plano atual.</p>
+        <p><b>9.6.</b> O preço da sua assinatura é o do dia em que você assinou ou pediu a troca de plano. Se formos mudá-lo, avisamos por e-mail com pelo menos 30 dias de antecedência. O preço novo vale a partir da primeira renovação depois desse prazo, e você pode cancelar antes dela.</p>
+        <p><b>9.7.</b> O cupom vale nas condições mostradas quando ele é aplicado: o desconto e por quantos meses. Ele não é trocado por dinheiro, e cada assinatura ou compra leva um cupom só.</p>
+        <p><b>9.8.</b> Se houver um problema com uma cobrança, fale com o suporte antes de contestá-la no cartão. Se a cobrança for estornada ou contestada, a assinatura pode ser encerrada e os avulsos daquela compra, tirados da cota.</p>
+      </section>
+
+      <section id="cancelamento">
+        <h2>10. Cancelamento, desistência e reembolso</h2>
+        <p><b>10.1.</b> Você cancela a assinatura quando quiser, na página Planos do app, sem multa. O plano continua até o fim do mês já pago; depois a conta volta para o Grátis, sem outra cobrança. Até esse dia, dá para desfazer o cancelamento. O mês em curso não é devolvido em parte, a não ser na desistência (cláusula 10.3).</p>
+        <p><b>10.2.</b> O cancelamento pedido com o pagamento atrasado encerra a assinatura no mesmo dia.</p>
+        <p><b>10.3.</b> Nos 7 dias seguintes ao começo da assinatura, você pode desistir dela. É o direito de arrependimento do art. 49 do Código de Defesa do Consumidor. Use o botão “Desistir e receber o dinheiro”, na página Planos do app, ou escreva para o suporte. O plano acaba na hora, e devolvemos o valor dos episódios do mês que você não usou: o que foi cobrado, dividido pelos episódios do plano e multiplicado pelos que sobraram. Sem nenhum episódio usado, volta o valor inteiro. Num plano de 8 episódios com 2 usados, por exemplo, voltam 6/8 do que foi cobrado.</p>
+        <p><b>10.4.</b> Nos 7 dias seguintes à confirmação do pagamento, os avulsos ainda não usados são devolvidos pelo valor pago: peça ao suporte, com o nome da compra que aparece na página Planos. O avulso que já virou episódio, ou que foi gasto para liberar um download, não é devolvido, porque o serviço já foi prestado a seu pedido.</p>
+        <p><b>10.5.</b> A cota conta o episódio quando ele é feito, e não quando é baixado: baixar o vídeo ou deixar de baixar não muda o que foi usado. Depois que o episódio foi feito, o valor dele não é devolvido, salvo no caso da cláusula 10.6.</p>
+        <p><b>10.6.</b> Se o vídeo sair com defeito nosso (sem som, travado, cortado ou diferente do roteiro que você aprovou, por exemplo), mande o link do episódio para o suporte, de preferência enquanto ele ainda está guardado. Nós refazemos o vídeo sem gastar a sua cota. Se não conseguirmos, o episódio volta para a cota ou, se você preferir, devolvemos o valor pago por ele. O erro de conteúdo num roteiro que você aprovou não é defeito do vídeo (seção 4).</p>
+        <p><b>10.7.</b> As devoluções saem pelo Asaas, no meio em que você pagou: o estorno no cartão ou, no Pix e no boleto, uma transferência para a conta que você indicar. Pedimos o estorno em até 5 dias úteis; o dia em que ele aparece na fatura depende da operadora do cartão.</p>
+        <p><b>10.8.</b> Quando a conta volta para o Grátis, os vídeos que ela fez passam a seguir as regras do Grátis. Se o Grátis não baixa os vídeos, eles deixam de poder ser baixados, menos os pagos com um avulso. Baixe os seus vídeos antes de o plano acabar.</p>
+      </section>
+
+      <section id="guarda">
+        <h2>11. Guarda dos episódios e funcionamento</h2>
+        <p><b>11.1.</b> Cada episódio fica guardado pelo prazo mostrado na Ajuda do app, que na data desta versão é de 30 dias depois da criação ou da última produção (salvar o roteiro não renova o prazo). Depois disso, o episódio, os vídeos e o link para os pais são apagados e não podem ser recuperados. A Turma do Ide não é um serviço de arquivo: nos planos que baixam, baixe o vídeo antes do fim do prazo.</p>
+        <p><b>11.2.</b> Em cada episódio você pode ligar um link para os pais. Quem tem o link assiste ao vídeo sem entrar em conta nenhuma: mande-o só para quem deve ver. Desligar o link faz o endereço parar de funcionar de vez (ligar de novo cria outro). O link também para se o episódio for apagado ou se a conta for bloqueada.</p>
+        <p><b>11.3.</b> O logo e os vídeos de abertura e de encerramento da igreja ficam na conta até você tirá-los ou a conta ser apagada, e entram nos vídeos que a conta produzir.</p>
+        <p><b>11.4.</b> Trabalhamos para manter o serviço no ar, mas não prometemos funcionamento sem interrupção. O serviço depende de fornecedores (a IA, as vozes, a hospedagem, os pagamentos) e pode parar para manutenção. A produção de um episódio entra numa fila e pode demorar: faça o episódio com antecedência, e não na hora da aula.</p>
+        <p><b>11.5.</b> O serviço muda com o tempo: recursos, histórias do catálogo, vozes e personagens podem entrar, mudar ou sair. Se uma mudança reduzir de forma importante o que um plano pago entrega, avisamos com 30 dias de antecedência, e você pode cancelar e receber o valor dos episódios do mês e dos avulsos que não usou.</p>
+      </section>
+
+      <section id="fim-da-conta">
+        <h2>12. Suspensão e fim da conta</h2>
+        <p><b>12.1.</b> Você pode pedir a exclusão da conta quando quiser, pelo suporte. Antes, cancele a assinatura e baixe os seus vídeos. Com a exclusão, os episódios, a cota e os avulsos não usados deixam de existir; a devolução de avulsos segue a cláusula 10.4.</p>
+        <p><b>12.2.</b> Podemos suspender ou bloquear a conta se houver descumprimento destes termos, fraude ou suspeita fundada de fraude, risco para a segurança do serviço ou de outras pessoas, ou ordem de autoridade. Com a conta bloqueada, o app e os links para os pais não abrem. Dizemos o motivo e, quando o problema tiver conserto, damos um prazo para isso.</p>
+        <p><b>12.3.</b> No descumprimento grave ou repetido (fraude, conteúdo da cláusula 6.2 ou revenda do serviço, por exemplo), podemos encerrar a conta. Nesse caso, o mês em curso não é devolvido.</p>
+        <p><b>12.4.</b> Se deixarmos de oferecer o serviço, ou se encerrarmos a sua conta sem descumprimento seu, avisamos com pelo menos 30 dias de antecedência e devolvemos o valor dos episódios do mês e dos avulsos que você não usou.</p>
+        <p><b>12.5.</b> Continuam valendo depois do fim da conta as restrições de uso (seção 6), os direitos sobre os episódios (seção 7) e as responsabilidades (seção 13).</p>
+      </section>
+
+      <section id="responsabilidades">
+        <h2>13. Responsabilidades</h2>
+        <p><b>13.1.</b> Nada nestes termos tira ou diminui um direito que a lei garante a você, em especial o Código de Defesa do Consumidor.</p>
+        <p><b>13.2.</b> A nossa parte é prestar o serviço como está descrito aqui e consertar os defeitos dele (cláusula 10.6).</p>
+        <p><b>13.3.</b> A sua parte é: o conteúdo que você escreve e envia; a revisão do roteiro e a decisão de mostrar ou publicar o episódio; as autorizações de que o episódio precisa, como a dos pais e a de uso do logo e dos vídeos da igreja; o uso que você faz dos vídeos e a escolha de quem recebe os links; e as regras das redes em que publicar.</p>
+        <p><b>13.4.</b> Não respondemos pelo erro de conteúdo num roteiro que você aprovou, pelo uso dos vídeos em desacordo com estes termos, pela falha de um serviço que não é nosso (a sua internet ou a rede em que você publicou, por exemplo) nem pela perda de um episódio apagado no fim do prazo de guarda.</p>
+        <p><b>13.5.</b> Sempre que a lei permitir, a nossa responsabilidade por danos ligados ao serviço fica limitada ao valor que você pagou à Turma do Ide nos 12 meses anteriores ao fato, e não cobre lucros cessantes nem danos indiretos. Esse limite não vale para o dano causado de propósito ou por culpa grave, nem quando a lei não admite limitação.</p>
+        <p><b>13.6.</b> Se a Turma do Ide for cobrada por outra pessoa, inclusive por um dos fornecedores da seção 3, por causa do seu conteúdo ou de um uso seu em desacordo com estes termos, você nos ressarce do que tivermos de pagar, incluídos os custos da defesa.</p>
+      </section>
+
+      <section id="privacidade">
+        <h2>14. Privacidade</h2>
+        <p><b>14.1.</b> O que fazemos com os dados pessoais está na <a href="privacidade.html">Política de Privacidade</a>. Em resumo: guardamos os dados da conta, da cobrança e dos episódios; não pedimos dados de crianças; e os textos dos episódios passam pelos fornecedores da seção 3, fora do Brasil.</p>
+        <p><b>14.2.</b> Para pedir os seus dados ou a exclusão deles, escreva para <a href="mailto:suporte@turmadoide.com.br">suporte@turmadoide.com.br</a>.</p>
+      </section>
+
+      <section id="mudancas">
+        <h2>15. Mudanças nestes termos</h2>
+        <p><b>15.1.</b> Podemos mudar estes termos. Cada versão tem uma data, mostrada no alto desta página. Quando a versão muda, o app pede um novo aceite no seu próximo acesso, e a versão nova vale a partir dele.</p>
+        <p><b>15.2.</b> Sem aceitar a versão nova, não dá para continuar usando o app. Se você não concordar com ela, escreva para o suporte em até 30 dias: cancelamos a assinatura e devolvemos o valor dos episódios do mês e dos avulsos que você não usou.</p>
+      </section>
+
+      <section id="lei-e-contato">
+        <h2>16. Lei, foro e contato</h2>
+        <p><b>16.1.</b> Os nossos avisos vão para o e-mail da conta ou aparecem no app: mantenha o e-mail em dia. Para falar conosco, escreva para <a href="mailto:suporte@turmadoide.com.br">suporte@turmadoide.com.br</a>. Se for sobre um episódio, mande o link da página dele.</p>
+        <p><b>16.2.</b> Se uma cláusula for considerada inválida, as outras continuam valendo. Deixar de exigir algo uma vez não é abrir mão do direito.</p>
+        <p><b>16.3.</b> Você não pode passar a conta nem este contrato a outra pessoa sem a nossa concordância. Podemos transferir o contrato a quem assumir o serviço, mantendo estas condições e avisando você.</p>
+        <p><b>16.4.</b> Estes termos seguem a lei brasileira. Vale o foro do domicílio do consumidor. Se você não for consumidor nos termos da lei, vale o foro do domicílio de quem presta o serviço (cláusula 1.2).</p>
+        <p><b>16.5.</b> Antes de qualquer outra medida, escreva para o suporte: queremos resolver direto com você.</p>
+      </section>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Turma do Ide · turmadoide.com.br</p>
+    <nav aria-label="Rodapé">
+      <a href="./">Início</a>
+      <a href="historias.html">Histórias</a>
+      <a href="privacidade.html">Privacidade</a>
+      <a href="mailto:suporte@turmadoide.com.br">Contato</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

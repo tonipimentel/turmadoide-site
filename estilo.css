@@ -1,0 +1,281 @@
+/*
+  O estilo das páginas de divulgação (index.html e historias.html), com a mesma identidade do app
+  (web/src/styles/tokens.css): o céu no fundo, o ouro do Ide na ação, o traço marrom nos contornos,
+  Baloo 2 e Nunito (em fontes/).
+  Os movimentos (a entrada das seções, os pulos da turma, o zoom das histórias) ficam no fim, dentro de
+  prefers-reduced-motion: no-preference: quem pediu menos movimento no sistema vê a página parada.
+*/
+@font-face { font-family: "Baloo 2"; src: url("fontes/baloo-2-latin-wght-normal.woff2") format("woff2"); font-weight: 400 800; font-display: swap; }
+@font-face { font-family: "Nunito"; src: url("fontes/nunito-latin-wght-normal.woff2") format("woff2"); font-weight: 200 1000; font-display: swap; }
+:root {
+  --bg: #e6f4fd; --surface: #ffffff; --text: #2b1a10; --muted: #5b4a3f; --line: #2b1a10;
+  --gold: #ffc62e; --gold-hover: #ffb800; --gold-soft: #fff3cc; --blue: #1b62c4; --night: #0f1b3d; --cream: #fff6dc;
+  --green: #2f7d3a;
+  --display: "Baloo 2", system-ui, sans-serif;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --mola: cubic-bezier(0.34, 1.56, 0.64, 1); /* passa um pouco do ponto e volta */
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--bg); color: var(--text); font: 500 17px/1.5 "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif; }
+img { display: block; max-width: 100%; }
+a { color: var(--blue); text-underline-offset: 2px; }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.1; }
+h2 { font-size: clamp(1.75rem, 4vw, 2.25rem); font-weight: 800; }
+h3 { font-size: 1.375rem; font-weight: 700; }
+[hidden] { display: none !important; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.muted { color: var(--muted); font-weight: 600; }
+.band { background: var(--surface); border-block: 2px solid var(--line); }
+.band-night { background: var(--night); border-block: 2px solid var(--line); }
+section { padding: 52px 0; scroll-margin-top: 8px; }
+.section-head { display: flex; flex-direction: column; gap: 6px; margin-bottom: 22px; }
+.section-head p { max-width: 640px; }
+.section-head-row { flex-flow: row wrap; align-items: flex-end; justify-content: space-between; gap: 8px 16px; }
+
+.button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 20px; border: 2px solid var(--line); border-radius: 14px; background: var(--surface); box-shadow: 0 4px 0 var(--line); color: var(--text); font-family: var(--display); font-size: 1.125rem; font-weight: 700; text-decoration: none; white-space: nowrap; cursor: pointer; transition: background-color 0.15s, box-shadow 0.15s var(--ease), transform 0.15s var(--ease); }
+.button:hover { background: #f1f8fd; }
+.button:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--line); }
+.button-primary { background: var(--gold); }
+.button-primary:hover { background: var(--gold-hover); }
+.button-lg { min-height: 58px; padding: 0 26px; border-radius: 16px; font-size: 1.375rem; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+.band-night :focus-visible { outline-color: var(--gold); }
+
+header.top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 0; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--text); font-family: var(--display); font-size: 1.75rem; font-weight: 800; line-height: 1; text-decoration: none; }
+.brand img { width: auto; height: 52px; transform-origin: 50% 90%; }
+.brand b { font-weight: inherit; }
+.brand span { color: var(--blue); }
+.top nav { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; font-weight: 800; }
+.top nav a:not(.button) { display: inline-flex; align-items: center; min-height: 44px; color: var(--text); text-decoration: underline 3px transparent; text-underline-offset: 7px; transition: text-decoration-color 0.2s; }
+.top nav a:not(.button):hover { text-decoration-color: var(--gold); }
+.top nav a.enter { color: var(--blue); }
+
+.hero { display: flex; flex-wrap: wrap; align-items: center; gap: 40px; padding: 28px 0 60px; }
+.hero-text { display: flex; flex: 1 1 400px; flex-direction: column; gap: 18px; min-width: 0; }
+.hero h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 800; line-height: 1.02; }
+.hero-text > p { font-size: 1.25rem; }
+.actions { display: flex; flex-wrap: wrap; gap: 14px; }
+.note { font-size: 0.9375rem; }
+.hero-art { position: relative; flex: 1 1 400px; min-width: 0; padding-bottom: 46px; scroll-margin-top: 16px; }
+.hero-frame { position: relative; overflow: hidden; border: 3px solid var(--line); border-radius: 24px; background: var(--night); box-shadow: 0 6px 0 var(--line); }
+.hero-frame img, .hero-frame video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.hero-frame video { object-fit: contain; }
+.hero-play { position: absolute; top: 44%; left: 50%; display: grid; place-items: center; width: 84px; height: 84px; padding: 0; border: 3px solid var(--line); border-radius: 50%; background: var(--gold); box-shadow: 0 5px 0 var(--line); color: var(--line); transform: translate(-50%, -50%); cursor: pointer; transition: background-color 0.15s, transform 0.2s var(--mola); }
+.hero-play:hover { background: var(--gold-hover); }
+.hero-play:active { box-shadow: 0 2px 0 var(--line); transform: translate(-50%, calc(-50% + 3px)); }
+.hero-ide, .hero-eclesia { position: absolute; bottom: 0; width: auto; pointer-events: none; }
+.hero-ide { left: -6px; height: 150px; }
+.hero-eclesia { right: 2px; height: 160px; }
+/* Com o vídeo tocando, os dois saem da frente dos controles do player. */
+.hero-art.playing { padding-bottom: 0; }
+.hero-art.playing .hero-ide, .hero-art.playing .hero-eclesia { display: none; }
+
+.grid { display: flex; flex-wrap: wrap; gap: 16px; }
+ul.grid, ol.grid { margin: 0; padding: 0; list-style: none; }
+
+/* A turma: a pose acenando e, por cima, a pulando (comemorando). Ao passar o mouse ou tocar (.pulando, do
+   animacao.js), o personagem dá um pulo só e para no fim dele, ainda comemorando, até o mouse sair (ou até tocar
+   em outro). Com menos movimento, só troca de pose enquanto o mouse está em cima. */
+.turma > li { display: flex; flex: 1 1 150px; flex-direction: column; align-items: center; gap: 6px; padding: 14px 10px; border: 2px solid var(--line); border-radius: 18px; text-align: center; transition: transform 0.3s var(--mola), box-shadow 0.3s var(--ease); }
+.pose { display: grid; justify-items: center; align-items: end; height: 130px; transform-origin: 50% 100%; }
+.pose img { grid-area: 1 / 1; width: auto; height: 130px; }
+.pose-pulando { opacity: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .turma > li.pulando .pose img:first-child { opacity: 0; }
+  .turma > li.pulando .pose-pulando { opacity: 1; }
+  @media (hover: hover) {
+    .turma > li:hover .pose img:first-child { opacity: 0; }
+    .turma > li:hover .pose-pulando { opacity: 1; }
+  }
+}
+.turma strong { font-family: var(--display); font-size: 1.375rem; font-weight: 700; line-height: 1; }
+.turma .papel { color: var(--muted); font-size: 0.875rem; font-weight: 700; }
+
+.card { display: flex; flex: 1 1 280px; flex-direction: column; gap: 8px; padding: 20px; border: 2px solid var(--line); border-radius: 18px; background: var(--surface); }
+.steps .card { box-shadow: 0 4px 0 var(--line); }
+.step-number { display: grid; place-items: center; width: 44px; height: 44px; border: 2px solid var(--line); border-radius: 50%; background: var(--gold); font-family: var(--display); font-size: 1.5rem; font-weight: 800; }
+
+/* As histórias: o cartão inteiro é o link. O botão por cima da arte diz o que o clique faz. */
+.band-night h2 { color: var(--cream); }
+.band-night .more { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--gold); font-weight: 800; }
+.band-night .more::after { content: "→"; display: inline-block; transition: transform 0.2s var(--ease); }
+.band-night .more:hover::after { transform: translateX(4px); }
+.stories > li { display: flex; flex: 1 1 220px; }
+.story { position: relative; display: flex; flex: 1; flex-direction: column; overflow: hidden; border: 2px solid var(--line); border-radius: 18px; background: var(--surface); color: var(--text); text-decoration: none; transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease); }
+.story-art { display: block; overflow: hidden; border-bottom: 2px solid var(--line); }
+.story-art img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; transition: transform 0.6s var(--ease); }
+.story-text { display: flex; flex-direction: column; padding: 10px 14px 14px; }
+.story-text strong { font-family: var(--display); font-size: 1.3125rem; font-weight: 700; line-height: 1.15; }
+.story-text span { color: var(--muted); font-size: 0.875rem; font-weight: 700; }
+.story-acao { position: absolute; inset: 0 0 auto; display: grid; place-items: center; aspect-ratio: 16 / 9; background: rgb(15 27 61 / 0); pointer-events: none; transition: background-color 0.25s; }
+.story-botao { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border: 2px solid var(--line); border-radius: 999px; background: var(--gold); box-shadow: 0 4px 0 var(--line); color: var(--text); font-family: var(--display); font-size: 1.0625rem; font-weight: 700; white-space: nowrap; opacity: 0; transform: translateY(8px) scale(0.9); transition: opacity 0.2s, transform 0.3s var(--mola); }
+.story:hover .story-acao, .story:focus-visible .story-acao { background: rgb(15 27 61 / 0.28); }
+.story:hover .story-botao, .story:focus-visible .story-botao { opacity: 1; transform: none; }
+/* A história com episódio pronto mostra o play sempre, como a miniatura de um vídeo. */
+.story[data-episodio] .story-botao { opacity: 1; transform: none; }
+.band-night .story:hover { box-shadow: 0 0 0 3px var(--gold), 0 14px 24px rgb(0 0 0 / 0.4); }
+.band-night .note { margin-top: 18px; color: #c9d3f2; }
+@media (hover: none) {
+  /* No toque não há o passar do mouse: o "Criar" vira um botãozinho no canto, sempre à vista. */
+  .story:not([data-episodio]) .story-acao { place-items: end; padding: 10px; }
+  .story:not([data-episodio]) .story-botao { width: 40px; min-height: 40px; padding: 0; justify-content: center; opacity: 1; transform: none; }
+  .story:not([data-episodio]) .rotulo { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
+
+/* Os planos: o link do botão se estende sobre o cartão inteiro (o ::after), e o cartão é que se mexe. */
+.plan { position: relative; flex: 1 1 220px; gap: 6px; transition: transform 0.3s var(--mola), box-shadow 0.3s var(--ease); }
+.plan.featured { background: var(--gold-soft); box-shadow: 0 5px 0 var(--line); }
+.price { font-family: var(--display); font-size: 2.125rem; font-weight: 800; line-height: 1.1; }
+.price small { color: var(--muted); font-family: "Nunito", sans-serif; font-size: 0.9375rem; font-weight: 700; }
+.plan p { color: var(--muted); font-size: 0.9375rem; font-weight: 600; }
+.plan .plan-marca, .plan .plan-baixar { display: flex; align-items: center; gap: 6px; font-size: 0.875rem; font-weight: 700; }
+.plan .plan-marca { margin-bottom: 14px; }
+.plan .plan-marca[data-sem-marca], .plan .plan-baixar[data-baixa] { color: var(--green); }
+.plan-marca svg, .plan-baixar svg { flex: none; }
+.plan-cta { margin-top: auto; }
+.plan-cta::after { content: ""; position: absolute; inset: 0; border-radius: 16px; }
+/* O botão não sai do lugar: com transform, ele prenderia o ::after e o resto do cartão deixaria de ser clicável. */
+.plan .plan-cta:hover, .plan .plan-cta:active { transform: none; }
+.plan:hover .plan-cta { background: #f1f8fd; }
+.plan:hover .plan-cta.button-primary { background: var(--gold-hover); }
+
+.cares .card { padding: 0; border: 0; background: transparent; }
+.closing { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 24px; }
+.closing img { width: auto; height: 170px; transform-origin: 50% 100%; }
+.closing div { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+.closing h2 { max-width: 16ch; }
+
+/* O catálogo (historias.html) */
+.page-head { display: flex; flex-direction: column; gap: 10px; padding: 20px 0 36px; }
+.page-head h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; }
+.page-head p { max-width: 680px; font-size: 1.125rem; }
+.catalog { padding: 0 0 44px; }
+.catalog h2 { margin-bottom: 16px; }
+.catalog .stories > li { flex: 0 1 calc(25% - 12px); min-width: 200px; }
+.catalog .story { box-shadow: 0 4px 0 var(--line); }
+.catalog .story:hover { box-shadow: 0 8px 0 var(--line); }
+.season { align-self: flex-start; margin-top: 6px; padding: 1px 10px; border: 2px solid var(--line); border-radius: 999px; background: var(--gold-soft); color: var(--text) !important; font-size: 0.8125rem !important; }
+
+/* As páginas de texto (termos.html e privacidade.html): uma coluna de leitura, com o resumo, o índice e as cláusulas numeradas. */
+.doc { max-width: 760px; padding-bottom: 56px; line-height: 1.6; }
+.doc section { padding: 0; scroll-margin-top: 16px; }
+.doc h2 { margin: 36px 0 12px; font-size: 1.5rem; }
+.doc p { margin-bottom: 12px; }
+.doc ul, .doc ol { margin: 0 0 12px; padding-left: 24px; }
+.doc li { margin-bottom: 6px; }
+.doc b, .doc li::marker { font-weight: 800; }
+.doc-box { margin-bottom: 20px; padding: 20px; border: 2px solid var(--line); border-radius: 18px; background: var(--surface); }
+.doc-box h2 { margin: 0 0 10px; font-size: 1.375rem; }
+.doc-box > :last-child { margin-bottom: 0; }
+.doc-summary { background: var(--gold-soft); box-shadow: 0 4px 0 var(--line); }
+.doc-index ol { columns: 2 240px; column-gap: 32px; font-weight: 700; }
+.doc-index li { break-inside: avoid; }
+@media print {
+  body { background: #fff; }
+  header.top nav, footer nav { display: none; }
+  .doc { max-width: none; }
+  .doc-box { box-shadow: none; break-inside: avoid; }
+}
+
+/* O episódio .mp4 de uma história, numa janela (animacao.js). */
+.player { width: min(960px, calc(100vw - 32px)); max-width: none; padding: 0; overflow: hidden; border: 3px solid var(--line); border-radius: 20px; background: var(--night); box-shadow: 0 8px 0 var(--line); }
+.player::backdrop { background: rgb(15 27 61 / 0.78); }
+.player video { display: block; width: 100%; aspect-ratio: 16 / 9; }
+.player-fechar { position: absolute; top: 10px; right: 10px; z-index: 1; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 2px solid var(--line); border-radius: 50%; background: var(--surface); box-shadow: 0 3px 0 var(--line); color: var(--text); cursor: pointer; }
+
+footer { border-top: 2px solid var(--line); background: var(--surface); font-size: 0.9375rem; font-weight: 700; }
+footer .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-block: 18px 26px; }
+footer nav { display: flex; flex-wrap: wrap; gap: 6px 20px; }
+footer nav a { display: inline-flex; align-items: center; min-height: 44px; }
+
+@media (max-width: 560px) {
+  .wrap { padding: 0 16px; }
+  section { padding: 40px 0; }
+  .hero-text > p { font-size: 1.125rem; }
+  .hero-ide { height: 116px; }
+  .hero-eclesia { height: 124px; }
+  .hero-play { width: 68px; height: 68px; }
+  .top nav a.anchor { display: none; }
+  .catalog .stories > li { flex: 1 1 calc(50% - 8px); min-width: 0; }
+  .button-lg { min-height: 54px; padding: 0 20px; font-size: 1.25rem; }
+  .story-botao { min-height: 38px; padding: 0 12px; font-size: 0.9375rem; }
+}
+
+/* --- Os movimentos ---------------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  /* A abertura: o texto sobe, o quadro vem atrás, e o Ide e a Eclésia pulam para dentro e ficam flutuando. */
+  .hero-text > * { animation: subir 0.7s var(--ease) both; }
+  .hero-text > :nth-child(2) { animation-delay: 0.08s; }
+  .hero-text > :nth-child(3) { animation-delay: 0.16s; }
+  .hero-text > :nth-child(4) { animation-delay: 0.24s; }
+  .hero-frame { animation: subir 0.8s var(--ease) 0.15s both; }
+  .hero-ide { transform-origin: 50% 100%; animation: surgir 0.6s var(--mola) 0.55s both, flutuar 4s ease-in-out 1.2s infinite; }
+  .hero-eclesia { transform-origin: 50% 100%; animation: surgir 0.6s var(--mola) 0.7s both, flutuar 4.6s ease-in-out 1.5s infinite; }
+  /* Uma onda sai do play, chamando para assistir. */
+  .hero-play::after { content: ""; position: absolute; inset: -3px; border: 3px solid var(--gold); border-radius: 50%; pointer-events: none; animation: onda 2.4s ease-out 1s infinite; }
+  .hero-play:hover { transform: translate(-50%, -50%) scale(1.08); }
+
+  .button:hover { transform: translateY(-2px); box-shadow: 0 6px 0 var(--line); }
+  .button:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--line); }
+
+  /* O Ide da marca acena ao passar o mouse. */
+  .brand:hover img { animation: aceno 0.7s ease-in-out; }
+
+  /* A turma: um pulo ao passar o mouse (ou no toque). A pose comemorando entra na decolagem e fica (forwards). */
+  @media (hover: hover) {
+    .turma > li:hover { transform: translateY(-6px) rotate(-1.5deg); box-shadow: 0 8px 0 var(--line); }
+    .turma > li:nth-child(even):hover { transform: translateY(-6px) rotate(1.5deg); }
+    .turma > li:hover .pose { animation: pulo 0.75s ease-in-out; }
+    .turma > li:hover .pose img:first-child { animation: decola-e-some 0.75s forwards; }
+    .turma > li:hover .pose-pulando { animation: decola-e-fica 0.75s forwards; }
+  }
+  .turma > li.pulando .pose { animation: pulo 0.75s ease-in-out; }
+  .turma > li.pulando .pose img:first-child { animation: decola-e-some 0.75s forwards; }
+  .turma > li.pulando .pose-pulando { animation: decola-e-fica 0.75s forwards; }
+
+  /* Os passos: o número dá uma volta. */
+  .steps .card:hover .step-number { animation: girar 0.6s var(--mola); }
+
+  /* As histórias: o cartão sobe e o cenário chega mais perto. */
+  .story:hover { transform: translateY(-6px); }
+  .story:active { transform: translateY(-2px); }
+  .story:hover .story-art img { transform: scale(1.08); }
+  .story[data-episodio] .story-botao { animation: respirar 2.4s ease-in-out infinite; }
+  .story[data-episodio]:hover .story-botao { animation: none; transform: scale(1.08); }
+
+  /* Os planos: o cartão sobe; no clique, desce. */
+  .plan:hover { transform: translateY(-5px); box-shadow: 0 9px 0 var(--line); }
+  .plan:active { transform: translateY(-1px); box-shadow: 0 4px 0 var(--line); }
+
+  /* O Ide do fim dá um pulo quando chega na tela (.apareceu, do animacao.js), e para. */
+  .closing.apareceu img { animation: pulo 0.75s ease-in-out 0.5s; }
+
+  /* As seções entram subindo quando chegam na tela (as marcadas pelo animacao.js). */
+  .revelar [data-revelar] { opacity: 0; }
+  .revelar [data-revelar].visto { animation: subir 0.6s var(--ease) var(--atraso, 0ms) both; }
+
+  .player[open] { animation: surgir 0.35s var(--mola); }
+}
+
+@keyframes subir { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+@keyframes surgir { from { opacity: 0; transform: translateY(24px) scale(0.7); } to { opacity: 1; transform: none; } }
+@keyframes flutuar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+@keyframes onda { from { opacity: 0.9; transform: scale(1); } to { opacity: 0; transform: scale(1.7); } }
+@keyframes aceno { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-12deg); } 50% { transform: rotate(9deg); } 75% { transform: rotate(-5deg); } }
+@keyframes pulo {
+  0%, 100% { transform: translateY(0) scale(1, 1); }
+  12% { transform: translateY(0) scale(1.08, 0.9); }
+  45% { transform: translateY(-22px) scale(0.95, 1.06); }
+  75% { transform: translateY(0) scale(1.05, 0.95); }
+  88% { transform: translateY(0) scale(0.98, 1.02); }
+}
+/* A troca de pose acompanha o pulo: na decolagem, sai a acenando e entra a comemorando, que fica até o fim
+   (troca seca, como num desenho). */
+@keyframes decola-e-fica { 0%, 9.9% { opacity: 0; } 10%, 100% { opacity: 1; } }
+@keyframes decola-e-some { 0%, 9.9% { opacity: 1; } 10%, 100% { opacity: 0; } }
+@keyframes girar { from { transform: rotate(0) scale(1); } 50% { transform: rotate(200deg) scale(1.15); } to { transform: rotate(360deg) scale(1); } }
+@keyframes respirar { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }

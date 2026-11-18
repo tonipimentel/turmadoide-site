@@ -1,0 +1,231 @@
+<!doctype html>
+<!--
+  A política de privacidade da Turma do Ide, que o cadastro do app pede para aceitar junto com os termos
+  (PRIVACIDADE_URL). O estilo é o estilo.css, o mesmo da página inicial (o bloco "As páginas de texto").
+
+  O que conferir ao mudar o texto ou um fornecedor:
+  - Quem responde pelo serviço: a cláusula 1.1 repete a cláusula 1.2 dos termos (o nome fantasia e o CNPJ,
+    sem o endereço, por decisão do dono).
+  - A ElevenLabs: a cláusula 6.2 diz que a opção de usar o conteúdo para melhorar os modelos está desligada na
+    conta (o dono confirmou em 17/11/2026). Nas contas que não são Enterprise ela vem ligada: numa conta nova,
+    desligue em Terms and privacy > Data use antes de usar a chave dela.
+  - Os fornecedores da seção 5: são os do docs/publicar.md (Railway, Supabase em US East, GitHub Pages, Asaas).
+    Se um deles mudar, ou se o banco for para outra região, mude a seção 5 e a 7. O provedor de e-mail (o SMTP
+    do login e a caixa do suporte) está sem nome: ponha o nome quando ele for escolhido.
+  - Os prazos repetem os do app: os episódios pelo RETENCAO_DIAS (30 dias), a exclusão da conta em cascata
+    (src/criador/titular.py) e o arquivo com os dados com links de 24 horas (o exportar do /admin).
+  - A versão: a mesma dos termos. Ao mudar o texto, troque a data do alto da página e a TERMOS_VERSAO.
+  - Os dados dos fornecedores (o treino de modelos, os prazos e os países) foram conferidos nas páginas de
+    cada um em 17/11/2026.
+-->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacidade · Turma do Ide</title>
+<meta name="description" content="A política de privacidade da Turma do Ide: que dados guardamos, por quanto tempo, com quais fornecedores eles são compartilhados e como pedir os seus dados ou a exclusão.">
+<meta name="theme-color" content="#e6f4fd">
+<link rel="preload" href="fontes/baloo-2-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="./"><img src="img/ide.webp" alt="" width="293" height="320"><b>Turma do <span>Ide</span></b></a>
+    <nav aria-label="Principal">
+      <a class="anchor" href="./#turma">A turma</a>
+      <a class="anchor" href="./#planos">Planos</a>
+      <a class="enter" href="https://app.turmadoide.com.br/">Entrar</a>
+      <a class="button button-primary" href="https://app.turmadoide.com.br/?criar">Começar grátis</a>
+    </nav>
+  </header>
+</div>
+
+<main>
+  <div class="wrap">
+    <div class="page-head">
+      <h1>Política de privacidade</h1>
+      <p class="muted" data-versao="2026-11-17">Versão de 17 de novembro de 2026.</p>
+    </div>
+
+    <article class="doc">
+      <div class="doc-box doc-summary">
+        <h2>Em poucas palavras</h2>
+        <ul>
+          <li>Guardamos só o que é preciso para a conta, a cobrança e os episódios.</li>
+          <li>As crianças não têm conta, e não pedimos dados delas.</li>
+          <li>O que você escreve para um episódio passa pela Anthropic, que escreve o roteiro, e pela ElevenLabs, que grava as vozes. As duas ficam nos Estados Unidos.</li>
+          <li>Não vendemos dados e não fazemos publicidade com eles. O site e o app não têm cookies de publicidade nem de medição.</li>
+          <li>Os episódios são apagados 30 dias depois da última produção. A conta é apagada quando você pede.</li>
+          <li>Para pedir os seus dados ou a exclusão, escreva para suporte@turmadoide.com.br.</li>
+        </ul>
+        <p>Este resumo ajuda a ler. O que vale é o texto completo, abaixo.</p>
+      </div>
+
+      <nav class="doc-box doc-index" aria-labelledby="indice">
+        <h2 id="indice">Nesta página</h2>
+        <ol>
+          <li><a href="#quem-cuida">Quem cuida dos seus dados</a></li>
+          <li><a href="#dados">Que dados guardamos</a></li>
+          <li><a href="#criancas">Crianças</a></li>
+          <li><a href="#para-que">Para que usamos os dados</a></li>
+          <li><a href="#fornecedores">Com quem compartilhamos</a></li>
+          <li><a href="#treino">Os fornecedores e o treino de modelos de IA</a></li>
+          <li><a href="#fora-do-brasil">Dados fora do Brasil</a></li>
+          <li><a href="#prazos">Por quanto tempo guardamos</a></li>
+          <li><a href="#navegador">Cookies e o que fica no navegador</a></li>
+          <li><a href="#seguranca">Segurança e incidentes</a></li>
+          <li><a href="#direitos">Os seus direitos</a></li>
+          <li><a href="#mudancas">Mudanças e contato</a></li>
+        </ol>
+      </nav>
+
+      <section id="quem-cuida">
+        <h2>1. Quem cuida dos seus dados</h2>
+        <p><b>1.1.</b> A Turma do Ide é prestada pela Wikode Software, inscrita no CNPJ sob o nº 47.963.421/0001-81. É ela quem decide o que é feito com os dados da sua conta, da cobrança e do uso do serviço: a controladora, nas palavras da Lei Geral de Proteção de Dados (LGPD, Lei 13.709/2018).</p>
+        <p><b>1.2.</b> O canal para tratar de dados pessoais é <a href="mailto:suporte@turmadoide.com.br">suporte@turmadoide.com.br</a>. É por ele que atendemos aos pedidos da seção 11.</p>
+        <p><b>1.3.</b> Quando você escreve num episódio o nome de alguém da turma ou da igreja, quem decide sobre esse dado é você ou a sua igreja. Nós o tratamos só para fazer o episódio, a seu pedido: somos a operadora desse dado, e você ou a sua igreja, a controladora.</p>
+        <p><b>1.4.</b> Esta política faz parte dos <a href="termos.html">Termos de uso</a>.</p>
+      </section>
+
+      <section id="dados">
+        <h2>2. Que dados guardamos</h2>
+        <p><b>2.1.</b> Do cadastro: o seu nome, o e-mail, a igreja e a função (professor de escola bíblica, líder do culto infantil, pastor, pai ou mãe, ou outra). A senha fica com o serviço de login, embaralhada: nós não a vemos.</p>
+        <p><b>2.2.</b> Do aceite dos termos: a versão aceita, a data, a hora e o endereço IP.</p>
+        <p><b>2.3.</b> Dos episódios: o que você escreve (a passagem, a lição, a situação da turma, as orientações e os nomes que pede para os personagens citarem), o roteiro, o kit da aula, as vozes gravadas e os vídeos. E o que você envia da igreja: o nome, o logo e os vídeos de abertura e de encerramento.</p>
+        <p><b>2.4.</b> Da assinatura e das compras: o plano, as datas, os valores, os cupons, a situação de cada pagamento e o número da cobrança no Asaas. Os dados do pagamento (o cartão e o CPF ou o CNPJ) você informa direto ao Asaas. Não recebemos o número do cartão.</p>
+        <p><b>2.5.</b> Do uso: a cota (os episódios feitos, reservados e devolvidos), quanto cada episódio gastou de texto e de voz, e os registros de cada produção.</p>
+        <p><b>2.6.</b> Registros técnicos: o endereço IP, a data e a hora dos acessos, guardados pela hospedagem e pelo serviço de login, para a segurança e para os limites de uso.</p>
+        <p><b>2.7.</b> Do suporte: as mensagens que você nos manda.</p>
+        <p><b>2.8.</b> De quem assiste pelo link para os pais não pedimos nada: não há conta nem formulário. Fica só o registro técnico da cláusula 2.6, como em qualquer página.</p>
+        <p><b>2.9.</b> A equipe da Turma do Ide pode ver os dados da conta e os episódios no painel de administração, para aprovar cadastros, cuidar da cobrança, dar suporte e apurar abuso.</p>
+      </section>
+
+      <section id="criancas">
+        <h2>3. Crianças</h2>
+        <p><b>3.1.</b> As crianças não têm conta, não usam o app e não nos dão dado nenhum. Quem usa a Turma do Ide são adultos, e elas só assistem aos vídeos.</p>
+        <p><b>3.2.</b> Não pedimos dados de crianças, e você não deve escrevê-los. Ao contar a situação da turma, descreva o assunto, sem dizer de quem se trata. Os textos com CPF ou com listas de e-mails são recusados.</p>
+        <p><b>3.3.</b> A exceção é o nome citado no vídeo. Quem cria o episódio pode escrever, se quiser, o primeiro nome de pessoas da igreja e de crianças da turma, para o Ide e a Eclésia falarem. Só o primeiro nome, sem sobrenome nem outro dado que identifique a criança.</p>
+        <p><b>3.4.</b> Esses nomes vão no pedido do roteiro, para a Anthropic, e na gravação das vozes, para a ElevenLabs. Ficam no roteiro e são ouvidos no vídeo por quem assistir, inclusive pelo link para os pais e pelo arquivo baixado. São guardados com o episódio, pelo mesmo prazo, e saem com ele (seção 8).</p>
+        <p><b>3.5.</b> A autorização dos pais ou responsáveis para citar o nome de uma criança é de quem cria o episódio, que a obtém antes de escrever o nome.</p>
+        <p><b>3.6.</b> Se você é pai, mãe ou responsável e quer tirar o nome do seu filho de um episódio, fale com a igreja que fez o vídeo ou escreva para <a href="mailto:suporte@turmadoide.com.br">suporte@turmadoide.com.br</a>, com o link. Levamos o pedido à igreja e, se for preciso, tiramos o vídeo do ar.</p>
+      </section>
+
+      <section id="para-que">
+        <h2>4. Para que usamos os dados</h2>
+        <p><b>4.1.</b> Usamos os dados para estas finalidades, cada uma com a sua base na LGPD:</p>
+        <ul>
+          <li><strong>Prestar o serviço:</strong> criar a conta, escrever o roteiro, gravar as vozes, produzir, guardar e mostrar os vídeos. A base é o contrato com você (art. 7º, V).</li>
+          <li><strong>Cobrar:</strong> a assinatura, os avulsos, os estornos e os documentos fiscais. As bases são o contrato e a obrigação legal (art. 7º, II e V).</li>
+          <li><strong>Falar com você:</strong> a confirmação da conta, a senha, a cobrança, as respostas do suporte e os avisos sobre o serviço e sobre estes documentos. A base é o contrato.</li>
+          <li><strong>Proteger o serviço:</strong> aprovar cadastros, aplicar os limites de uso, recusar textos impróprios, prevenir fraude e guardar a prova do aceite. As bases são o legítimo interesse, a obrigação legal e o exercício de direitos (art. 7º, II, VI e IX).</li>
+          <li><strong>Acompanhar o serviço:</strong> números somados, como quantos episódios foram feitos, quanto custaram e quantos falharam. A base é o legítimo interesse (art. 7º, IX).</li>
+        </ul>
+        <p><b>4.2.</b> Não vendemos nem alugamos dados, não fazemos publicidade com eles, não montamos perfil de crianças e não treinamos modelos de inteligência artificial com o que você escreve.</p>
+        <p><b>4.3.</b> A recusa de um texto é automática (por exemplo, quando ele traz um CPF). Se achar que a recusa foi um engano, escreva para o suporte: uma pessoa revê o caso.</p>
+      </section>
+
+      <section id="fornecedores">
+        <h2>5. Com quem compartilhamos</h2>
+        <p><b>5.1.</b> Para funcionar, a Turma do Ide usa estes fornecedores, e cada um recebe só o que precisa para a parte dele:</p>
+        <ul>
+          <li><strong>Anthropic, PBC</strong> (Estados Unidos): escreve o roteiro, o kit da aula e as traduções. Recebe o texto do pedido (a passagem, a lição, a situação da turma, as orientações, os nomes citados e o nome da igreja) e o roteiro.</li>
+          <li><strong>Eleven Labs Inc.</strong> (Estados Unidos): grava as vozes. Recebe as falas do roteiro, com os nomes citados nelas.</li>
+          <li><strong>Supabase Pte. Ltd.</strong> (Singapura, com os servidores nos Estados Unidos): o banco de dados, o login e os arquivos. Guarda a conta, os episódios e os arquivos.</li>
+          <li><strong>Railway Corporation</strong> (Estados Unidos): hospeda o app e produz os vídeos. Por ele passa tudo o que o app trata.</li>
+          <li><strong>ASAAS Gestão Financeira Instituição de Pagamento S.A.</strong> (Brasil): faz a cobrança. Recebe o seu nome, o e-mail, o valor e os dados do pagamento que você informa a ele.</li>
+          <li><strong>GitHub, Inc.</strong> (Estados Unidos): hospeda o site turmadoide.com.br. Registra o endereço IP de quem visita o site, por segurança.</li>
+          <li><strong>Provedor de e-mail:</strong> entrega as mensagens de confirmação, de senha e de convite e guarda a caixa do suporte. Recebe o seu e-mail e o conteúdo dessas mensagens.</li>
+        </ul>
+        <p><b>5.2.</b> Fora isso, só entregamos dados a uma autoridade quando a lei ou uma ordem obrigar, e a quem assumir o serviço, se ele mudar de dono, com aviso a você.</p>
+        <p><b>5.3.</b> Quem tem o link para os pais assiste ao vídeo, com os nomes citados nele. Mande o link só para quem deve ver.</p>
+        <p><b>5.4.</b> Quando um fornecedor mudar, esta lista é atualizada.</p>
+      </section>
+
+      <section id="treino">
+        <h2>6. Os fornecedores e o treino de modelos de IA</h2>
+        <p><b>6.1.</b> A Anthropic, pelos termos comerciais dela, não treina modelos com o conteúdo enviado pela interface de programação que usamos. Ela apaga os pedidos e as respostas em até 30 dias, a não ser o que precise guardar por segurança ou por lei, como o conteúdo marcado por descumprir a política de uso dela.</p>
+        <p><b>6.2.</b> A ElevenLabs deixa cada cliente escolher se o conteúdo enviado pode ser usado para melhorar os modelos dela. Na nossa conta, essa opção fica desligada. Ela guarda as falas geradas pelo prazo da política dela.</p>
+        <p><b>6.3.</b> Os outros fornecedores tratam os dados só para prestar o serviço deles.</p>
+      </section>
+
+      <section id="fora-do-brasil">
+        <h2>7. Dados fora do Brasil</h2>
+        <p><b>7.1.</b> Os fornecedores de inteligência artificial, de banco de dados e de hospedagem ficam nos Estados Unidos. Por isso os dados da conta e dos episódios saem do Brasil.</p>
+        <p><b>7.2.</b> Essa transferência é necessária para prestar o serviço que você contratou (LGPD, art. 33, IX). Ela é feita com fornecedores que assumem, por contrato, obrigações de proteção de dados. Quando o fornecedor oferece as cláusulas-padrão aprovadas pela Autoridade Nacional de Proteção de Dados (ANPD), como faz a ElevenLabs, elas valem.</p>
+        <p><b>7.3.</b> A cobrança é feita no Brasil, pelo Asaas.</p>
+      </section>
+
+      <section id="prazos">
+        <h2>8. Por quanto tempo guardamos</h2>
+        <p><b>8.1.</b> Os episódios (o que você escreveu, o roteiro, as vozes, os vídeos e os nomes citados) ficam pelo prazo mostrado na Ajuda do app, que na data desta versão é de 30 dias depois da criação ou da última produção. Depois disso são apagados, com os arquivos. Você pode apagar um episódio antes, na página dele.</p>
+        <p><b>8.2.</b> O logo e os vídeos de abertura e de encerramento da igreja ficam até você tirá-los ou a conta ser apagada.</p>
+        <p><b>8.3.</b> Os dados da conta (o cadastro, o aceite, a cota, o uso, a assinatura e as compras) ficam enquanto a conta existir. Com a exclusão da conta, tudo isso é apagado do nosso banco e dos nossos arquivos, junto com os episódios.</p>
+        <p><b>8.4.</b> As cópias de segurança do banco podem guardar os dados por mais alguns dias, até serem substituídas.</p>
+        <p><b>8.5.</b> Os registros de cobrança e os documentos fiscais ficam pelo prazo que a lei exige (em regra, 5 anos), no Asaas e na nossa contabilidade.</p>
+        <p><b>8.6.</b> As mensagens do suporte ficam pelo tempo necessário para atender você e para nos defender numa reclamação, até 5 anos.</p>
+        <p><b>8.7.</b> Os registros técnicos de acesso ficam pelo prazo que a lei exige e pelo prazo de guarda de cada fornecedor de hospedagem.</p>
+      </section>
+
+      <section id="navegador">
+        <h2>9. Cookies e o que fica no navegador</h2>
+        <p><b>9.1.</b> O site e o app não usam cookies de publicidade nem ferramentas de medição de audiência.</p>
+        <p><b>9.2.</b> O app guarda no seu navegador só o que é preciso para funcionar: a sessão, que mantém você conectado, e as suas preferências, como a aparência e a conta em uso. Isso sai quando você clica em Sair ou limpa os dados do navegador.</p>
+        <p><b>9.3.</b> A página inicial busca os planos e os preços no app, sem enviar dado seu.</p>
+      </section>
+
+      <section id="seguranca">
+        <h2>10. Segurança e incidentes</h2>
+        <p><b>10.1.</b> Cuidamos dos dados com estas medidas, entre outras: a conexão cifrada (HTTPS), a separação dos dados de cada conta no banco, os arquivos numa área fechada, abertos só por links temporários, a senha guardada embaralhada pelo serviço de login e o painel de administração restrito à equipe.</p>
+        <p><b>10.2.</b> Nenhum sistema é à prova de tudo. Você ajuda cuidando da senha e de quem recebe os links para os pais.</p>
+        <p><b>10.3.</b> Se houver um incidente de segurança, nós:</p>
+        <ol>
+          <li>contemos o problema, fechando o acesso e trocando as chaves;</li>
+          <li>apuramos o que aconteceu e quais dados foram afetados;</li>
+          <li>avisamos você e a ANPD, no prazo que a regulamentação dela determina, quando o incidente puder trazer risco ou dano relevante, dizendo o que houve, quais dados foram afetados e o que fazer;</li>
+          <li>corrigimos a causa e registramos o incidente.</li>
+        </ol>
+        <p><b>10.4.</b> Os contratos com os fornecedores preveem que eles nos avisem dos incidentes deles.</p>
+        <p><b>10.5.</b> Se você desconfiar de um problema de segurança, escreva para <a href="mailto:suporte@turmadoide.com.br">suporte@turmadoide.com.br</a>.</p>
+      </section>
+
+      <section id="direitos">
+        <h2>11. Os seus direitos</h2>
+        <p><b>11.1.</b> Pela LGPD (art. 18), você pode:</p>
+        <ul>
+          <li>saber se tratamos dados seus e receber uma cópia deles;</li>
+          <li>corrigir um dado errado ou desatualizado;</li>
+          <li>pedir a exclusão da conta e dos dados;</li>
+          <li>levar os seus dados para outro serviço;</li>
+          <li>saber com quem os dados foram compartilhados;</li>
+          <li>opor-se a um uso com que não concorda e pedir a revisão de uma decisão automática;</li>
+          <li>reclamar à ANPD, em <a href="https://www.gov.br/anpd" rel="noopener">gov.br/anpd</a>.</li>
+        </ul>
+        <p><b>11.2.</b> Para isso, escreva para <a href="mailto:suporte@turmadoide.com.br">suporte@turmadoide.com.br</a> do e-mail da conta, para sabermos que é você. Respondemos em até 15 dias.</p>
+        <p><b>11.3.</b> A cópia dos dados vem num arquivo com tudo o que a conta guarda, e com links para baixar os vídeos e os outros arquivos, que valem por 24 horas.</p>
+        <p><b>11.4.</b> A exclusão apaga a conta, os episódios e os arquivos, e não tem volta. Antes de pedir, cancele a assinatura e baixe os seus vídeos. O que a lei manda guardar continua guardado pelo prazo dela (seção 8).</p>
+        <p><b>11.5.</b> Algumas coisas você mesmo faz no app: trocar a senha, apagar um episódio, tirar o logo e os vídeos da igreja e desligar um link para os pais.</p>
+      </section>
+
+      <section id="mudancas">
+        <h2>12. Mudanças e contato</h2>
+        <p><b>12.1.</b> Podemos mudar esta política. Cada versão tem uma data, mostrada no alto desta página, a mesma dos Termos de uso. Quando a versão muda, o app pede um novo aceite no seu próximo acesso.</p>
+        <p><b>12.2.</b> Para falar sobre esta política ou sobre os seus dados, escreva para <a href="mailto:suporte@turmadoide.com.br">suporte@turmadoide.com.br</a>.</p>
+      </section>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Turma do Ide · turmadoide.com.br</p>
+    <nav aria-label="Rodapé">
+      <a href="./">Início</a>
+      <a href="historias.html">Histórias</a>
+      <a href="termos.html">Termos de uso</a>
+      <a href="mailto:suporte@turmadoide.com.br">Contato</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>
